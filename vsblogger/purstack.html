@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rich Text Editor</title>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+<style>
+    * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #338cf4;
+}
+.container {
+  background-color: #ffffff;
+  width: 90vmin;
+  padding: 50px 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  border-radius: 10px;
+  box-shadow: 0 25px 50px rgba(7, 20, 35, 0.2);
+}
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+button {
+  height: 28px;
+  width: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  border: none;
+  background-color: #ffffff;
+  outline: none;
+  color: #020929;
+}
+select {
+  padding: 7px;
+  border: 1px solid #020929;
+  border-radius: 3px;
+}
+.options label,
+.options select {
+  font-family: "Poppins", sans-serif;
+}
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 40px;
+  height: 28px;
+  border: none;
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 15px;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
+}
+input[type="color"]::-moz-color-swatch {
+  border-radius: 15px;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
+}
+#text-input {
+  margin-top: 10px;
+  border: 1px solid #dddddd;
+  padding: 20px;
+  height: 50vh;
+}
+.active {
+  background-color: #e0e9ff;
+}
+</style>
+  <body>
+    <div class="container">
+      <div class="options">
+        <!-- Text Format -->
+        <button id="bold" class="option-button format">
+          <i class="fa-solid fa-bold"></i>
+        </button>
+        <button id="italic" class="option-button format">
+          <i class="fa-solid fa-italic"></i>
+        </button>
+        <button id="underline" class="option-button format">
+          <i class="fa-solid fa-underline"></i>
+        </button>
+        <button id="strikethrough" class="option-button format">
+          <i class="fa-solid fa-strikethrough"></i>
+        </button>
+        <button id="superscript" class="option-button script">
+          <i class="fa-solid fa-superscript"></i>
+        </button>
+        <button id="subscript" class="option-button script">
+          <i class="fa-solid fa-subscript"></i>
+        </button>
+
+        <!-- List -->
+        <button id="insertOrderedList" class="option-button">
+          <div class="fa-solid fa-list-ol"></div>
+        </button>
+        <button id="insertUnorderedList" class="option-button">
+          <i class="fa-solid fa-list"></i>
+        </button>
+
+        <!-- Undo/Redo -->
+        <button id="undo" class="option-button">
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+        <button id="redo" class="option-button">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+
+        <!-- Link -->
+        <button id="createLink" class="adv-option-button">
+          <i class="fa fa-link"></i>
+        </button>
+        <button id="unlink" class="option-button">
+          <i class="fa fa-unlink"></i>
+        </button>
+
+        <!-- Alignment -->
+        <button id="justifyLeft" class="option-button align">
+          <i class="fa-solid fa-align-left"></i>
+        </button>
+        <button id="justifyCenter" class="option-button align">
+          <i class="fa-solid fa-align-center"></i>
+        </button>
+        <button id="justifyRight" class="option-button align">
+          <i class="fa-solid fa-align-right"></i>
+        </button>
+        <button id="justifyFull" class="option-button align">
+          <i class="fa-solid fa-align-justify"></i>
+        </button>
+        <button id="indent" class="option-button spacing">
+          <i class="fa-solid fa-indent"></i>
+        </button>
+        <button id="outdent" class="option-button spacing">
+          <i class="fa-solid fa-outdent"></i>
+        </button>
+        <button id="outdent" class="option-button spacing">
+          <svg width="29" height="26" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.18451 3.93454C2.24634 4.95021 1.57315 6.18158 1.22454 7.51957C0.87594 8.85755 0.862694 10.2609 1.18598 11.6052C1.50926 12.9495 2.15909 14.1934 3.07792 15.2266C3.99674 16.2598 5.15619 17.0504 6.45357 17.5285C7.75094 18.0066 9.1462 18.1573 10.5157 17.9673C11.8853 17.7774 13.1868 17.2526 14.3051 16.4395C15.4234 15.6263 16.3239 14.55 16.9268 13.3057C17.5298 12.0614 17.8165 10.6877 17.7617 9.3061L16.5617 9.3537C16.6086 10.5379 16.3628 11.7154 15.846 12.782C15.3292 13.8485 14.5574 14.7711 13.5988 15.4681C12.6403 16.1651 11.5246 16.6149 10.3507 16.7777C9.17683 16.9405 7.98088 16.8113 6.86883 16.4016C5.75678 15.9918 4.76296 15.3141 3.97539 14.4285C3.18781 13.5428 2.63081 12.4767 2.3537 11.3244C2.0766 10.1721 2.08796 8.96923 2.38676 7.82237C2.68557 6.67551 3.2626 5.62005 4.06675 4.74946L3.18451 3.93454Z" fill="#424242"/>
+            <path d="M12.2079 1.72821C10.3874 1.06619 8.29426 1.10993 6.60408 1.69663L7.40824 2.72124C8.85698 2.21834 10.0181 2.30069 11.4836 2.75232L12.2079 1.72821Z" fill="#424242"/>
+            <path d="M9.36035 10.0598C9.36035 9.64188 9.69913 9.3031 10.117 9.3031H17.7681L17.5117 10.8165H10.117C9.69913 10.8165 9.36035 10.4777 9.36035 10.0598V10.0598Z" fill="#424242"/>
+            <circle cx="19.49" cy="16.4582" r="1.65506" fill="#424242"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.8631 7.85193C15.6912 7.85193 17.1732 6.36994 17.1732 4.54181C17.1732 2.71368 15.6912 1.23169 13.8631 1.23169C12.0349 1.23169 10.5529 2.71368 10.5529 4.54181C10.5529 6.36994 12.0349 7.85193 13.8631 7.85193ZM4.92584 7.85198C6.75397 7.85198 8.23596 6.36999 8.23596 4.54186C8.23596 2.71373 6.75397 1.23174 4.92584 1.23174C3.09771 1.23174 1.61572 2.71373 1.61572 4.54186C1.61572 6.36999 3.09771 7.85198 4.92584 7.85198ZM10.884 4.54181C10.884 5.8215 11.6773 6.85889 12.6559 6.85889C13.6345 6.85889 14.4278 5.8215 14.4278 4.54181C14.4278 3.26212 13.6345 2.22473 12.6559 2.22473C11.6773 2.22473 10.884 3.26212 10.884 4.54181ZM6.08428 6.85889C5.07881 6.85889 4.26372 5.8215 4.26372 4.54181C4.26372 3.26212 5.07881 2.22473 6.08428 2.22473C7.08975 2.22473 7.90485 3.26212 7.90485 4.54181C7.90485 5.8215 7.08975 6.85889 6.08428 6.85889Z" fill="#424242"/>
+            <rect width="2.97911" height="0.662024" transform="matrix(1 0 0 -1 7.90479 5.20374)" fill="#424242"/>
+            </svg>
+            
+        </button>
+
+        <!-- Headings -->
+        <select id="formatBlock" class="adv-option-button">
+          <option value="H1">H1</option>
+          <option value="H2">H2</option>
+          <option value="H3">H3</option>
+          <option value="H4">H4</option>
+          <option value="H5">H5</option>
+          <option value="H6">H6</option>
+        </select>
+
+        <!-- Font -->
+        <select id="fontName" class="adv-option-button"></select>
+        <select id="fontSize" class="adv-option-button"></select>
+
+        <!-- Color -->
+        <div class="input-wrapper">
+          <input type="color" id="foreColor" class="adv-option-button" />
+          <label for="foreColor">Font Color</label>
+        </div>
+        <div class="input-wrapper">
+          <input type="color" id="backColor" class="adv-option-button" />
+          <label for="backColor">Highlight Color</label>
+        </div>
+      </div>
+      <div id="text-input" contenteditable="true"></div>
+    </div>
+    <!--Script-->
+    <script >
+        let optionsButtons = document.querySelectorAll(".option-button");
+let advancedOptionButton = document.querySelectorAll(".adv-option-button");
+let fontName = document.getElementById("fontName");
+let fontSizeRef = document.getElementById("fontSize");
+let writingArea = document.getElementById("text-input");
+let linkButton = document.getElementById("createLink");
+let alignButtons = document.querySelectorAll(".align");
+let spacingButtons = document.querySelectorAll(".spacing");
+let formatButtons = document.querySelectorAll(".format");
+let scriptButtons = document.querySelectorAll(".script");
+
+//List of fontlist
+let fontList = [
+  "Arial",
+  "Verdana",
+  "Times New Roman",
+  "Garamond",
+  "Georgia",
+  "Courier New",
+  "cursive",
+];
+
+//Initial Settings
+const initializer = () => {
+  //function calls for highlighting buttons
+  //No highlights for link, unlink,lists, undo,redo since they are one time operations
+  highlighter(alignButtons, true);
+  highlighter(spacingButtons, true);
+  highlighter(formatButtons, false);
+  highlighter(scriptButtons, true);
+
+  //create options for font names
+  fontList.map((value) => {
+    let option = document.createElement("option");
+    option.value = value;
+    option.innerHTML = value;
+    fontName.appendChild(option);
+  });
+
+  //fontSize allows only till 7
+  for (let i = 1; i <= 7; i++) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.innerHTML = i;
+    fontSizeRef.appendChild(option);
+  }
+
+  //default size
+  fontSizeRef.value = 3;
+};
+
+//main logic
+const modifyText = (command, defaultUi, value) => {
+  //execCommand executes command on selected text
+  document.execCommand(command, defaultUi, value);
+};
+
+//For basic operations which don't need value parameter
+optionsButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    modifyText(button.id, false, null);
+  });
+});
+
+//options that require value parameter (e.g colors, fonts)
+advancedOptionButton.forEach((button) => {
+  button.addEventListener("change", () => {
+    modifyText(button.id, false, button.value);
+  });
+});
+
+//link
+linkButton.addEventListener("click", () => {
+  let userLink = prompt("Enter a URL");
+  //if link has http then pass directly else add https
+  if (/http/i.test(userLink)) {
+    modifyText(linkButton.id, false, userLink);
+  } else {
+    userLink = "http://" + userLink;
+    modifyText(linkButton.id, false, userLink);
+  }
+});
+
+//Highlight clicked button
+const highlighter = (className, needsRemoval) => {
+  className.forEach((button) => {
+    button.addEventListener("click", () => {
+      //needsRemoval = true means only one button should be highlight and other would be normal
+      if (needsRemoval) {
+        let alreadyActive = false;
+
+        //If currently clicked button is already active
+        if (button.classList.contains("active")) {
+          alreadyActive = true;
+        }
+
+        //Remove highlight from other buttons
+        highlighterRemover(className);
+        if (!alreadyActive) {
+          //highlight clicked button
+          button.classList.add("active");
+        }
+      } else {
+        //if other buttons can be highlighted
+        button.classList.toggle("active");
+      }
+    });
+  });
+};
+
+const highlighterRemover = (className) => {
+  className.forEach((button) => {
+    button.classList.remove("active");
+  });
+};
+
+window.onload = initializer();
+    </script>
+  </body>
+</html>

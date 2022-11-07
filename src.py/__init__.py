@@ -4,8 +4,19 @@ class eng:
     def __init__(self):
         self.lang = 'eng'
         self.data = None
+
         with open('src.py/eng.json','r',encoding='utf-8') as f:
             self.data = json.load(f)
+            nlsp = [] 
+            print('started')
+            for i in self.data.keys():
+                nlsp.append(i)
+            with open('wordnlist.js','w') as frc:
+                frc.write('var keyson = ')
+                frc.write("\t")
+                json.dump(nlsp,frc,indent=4)
+                frc.write(';')
+            print('ended')
 
     def isword(self,word):
         a = word.split()
@@ -40,3 +51,4 @@ class hindi:
                     b += ((False,i[0],i[1]),)
             return b
 
+a = eng()

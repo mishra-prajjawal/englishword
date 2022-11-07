@@ -1,4 +1,5 @@
 import json 
+import re 
 from deep_translator import GoogleTranslator
 def intl(word,action,lang):
     with open("src.py/machineLearning.py/encoded.eng.json","r",encoding="utf-8") as f:
