@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Templates on VSblogger</title>
+</head>
+<style>
+body{
+    margin:0; 
+    font-family:'ROBOTO',sans-serif;
+}
+.mss-mainheader{
+        position:absolute; 
+        margin: auto;
+        display:block;
+        right:0;
+        left: 0;
+        width: 100%;
+        height: 35%;
+        background-color: #0044ff;
+        z-index: 1;
+        box-shadow: inset 0px 0px 100px -3px rgba(0, 5, 151, 0.7);
+}
+.mss-mainbody{
+    border-radius: 20px;
+    position: absolute;
+    z-index: 2;
+    margin: auto;
+    display:block;
+    right:0;
+    top: 50px;
+    left: 0;
+    width: 80%;
+    height: auto;
+  
+    background-color: #ffffff;
+    box-shadow: 3px 5px 100px 1px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.mss-mainhead{
+    position: relative;
+    margin: auto;
+        display:block;
+        right:0;
+        top: 18px;
+        left: 0;
+        width: 98%;
+        height: 350px;
+        background-color: #eeeeee;
+          box-shadow:none;
+        background: url("https://images.unsplash.com/photo-1518943701174-17e4aff936d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1387&q=80");
+        border-radius: 20px 20px  20px 20px ;
+}
+.mss-mainheading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+ 
+    width: 100%;
+    height: 100%;
+    
+}
+.mss-mainheading h1{
+    position: relative;
+    display:block;
+    color: #ffffff;
+    font-size: 6vw;
+    text-align: center;
+    line-height: 35%;
+    font-family: 'Roboto', sans-serif;
+}
+.mss-row{
+    position: relative;
+    display: flexbox;
+    justify-content: left;
+    margin: auto;
+    width: 96%;
+    padding:2%;
+    border-radius: 20px ;
+    height: auto;
+    background-color: #ffffff;
+    min-height: 200px;
+    margin-top: 40px; 
+}
+.mss-row h1{
+    position: relative;
+    display:block;
+    top:20px;
+    color: #030303;
+    font-size: 3vw;
+    line-height: 35%;
+    font-family: 'Roboto', sans-serif;
+}
+.mss-row p{
+    top:20px;
+    color: #141414;
+    word-wrap: break-word;
+    word-spacing: 1px;
+    word-break: keep-all;
+}
+br{
+    display: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.mss-spacer{
+    width: 100%;
+    display: none;
+    height: 5px;
+}
+.mss-spacer-s {
+    
+    height: 5px;
+}
+.mss-spacer-m{
+    height: 10px;
+}
+.mss-spacer-s-m{
+    height: 7.5px;
+}
+blockquote{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 92%;
+    padding:4%;
+    user-select: none;
+    -webkit-user-drag: none;
+    
+    height: auto;
+    border-radius: 12px;
+    background-color: hsla(210,18%,87%,1);
+    min-height: 100px;
+    margin-top: 40px; 
+}
+blockquote:hover{
+    outline: 2px solid #c2c2c2;
+}
+blockquote font{
+    font-size: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #141414;
+    word-wrap: break-word;
+    word-spacing: 1px;
+    word-break: keep-all;
+
+}
+blockquote p{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #141414;
+    word-wrap: break-word;
+    word-spacing: 1px;
+    word-break: keep-all;
+}
+blockquote p::before{
+    content: " - ";
+
+}
+
+.mss-copy{
+    position:absolute;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    bottom:0; 
+    right:0;
+    width:40px; 
+    height:40px;  
+    margin-bottom:7px; 
+    margin-right:7px;
+    border-radius: 8px;
+    outline :2px solid #a0a0a0;
+}
+.mss-copy:active {
+    border: 1px solid #a0a0a0;
+    background-color: #a0a0a0;
+}
+.mss-notif-copy{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    right:0; 
+    bottom:0;
+    border-radius: 4px;
+    content: "Copied";
+    outline :2px solid #c0c0c0;
+    background-color: #f3f0f0;
+    opacity: 0; 
+    margin-right: 40px;
+    padding:4px;
+    
+
+}
+@keyframes mss-notdif-copy{
+    0%{
+        display: flex; 
+        opacity: 0;
+        margin-bottom: 0px;
+        transform: translateY(0px);
+    }
+
+    15%{
+        display: flex;
+        opacity: 1;
+        margin-bottom: -20px;
+        transform: translateY(10px);
+    }
+    98%{
+        display: flex;
+        opacity: 1;
+        margin-bottom: -20px;
+        transform: translateY(10px);
+    }
+    100%{
+        opacity: 0;
+        margin-bottom: 0px;
+        transform: translateY(0px);
+    }
+
+}
+
+blockquote:hover .mss-copy{
+    display: flex;
+}
+
+
+
+.mss-row iframe{
+    position: relative;
+    max-height: 800px;
+    min-height: 400px;
+    width:100%;
+    margin:0;
+   
+}
+.mss-row .iframe-youtube{
+    position: relative;
+    height: auto;
+    width:100%;
+    margin:0;
+    border-radius: 12px;
+}
+@media screen and (max-width: 600px) {
+    .mss-mainbody{
+        width: 100%;
+        height: auto;
+        border-radius: 0px;
+    }
+    .mss-row{
+        position: absolute; 
+        border-radius: 0px; 
+        box-shadow: none;
+        width:97%; 
+        padding: 1.5%;
+    }
+    .mss-row .iframe-youtube{
+        border-radius: 0px;
+       
+        height: max-content;
+    }
+    blockquote{
+        width: 88%;
+        padding: 4%;
+        font-size: 1vh;
+        border-radius: 20px; 
+        box-shadow: none;
+    } 
+    blockquote font{
+       font-size: 2.5vh;
+
+    }
+
+    
+}
+.frame-i{
+    width:auto;
+    height: auto;
+}
+.frame-i .mss-f2c-iframe{
+    position: relative;
+    display:flex; 
+    width:45px;
+    height:45px;
+    border-radius: 50%;
+
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.486);
+    align-items: center;
+    justify-content: center;
+}
+.mss-f2c-iframe svg{
+    position: relative;
+    margin: auto;
+    left:0; 
+    right:0;
+    display: block;
+    width: 25px;
+    height: 25px;
+
+}
+.mss-bar-iframe{
+    position: absolute;
+    display: flex;
+    flex-direction: table;
+    width:95.8%; 
+    height:50px;
+    margin-top:-55px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.295);
+    align-items: center;
+    justify-content: center;
+}
+.mss-shr-iframe{
+    position: relative;
+    display:flex; 
+    width:45px;
+    height:45px;
+    border-radius: 50%;
+    margin-left: 10px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.486);
+    align-items: center;
+    justify-content: center;
+}
+.mss-shr-iframe svg{
+    position: relative;
+    margin: auto;
+    left:0; 
+    right:0;
+    display: block;
+    fill:#ffffff
+
+}
+.code{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background-color: #d8d8d8;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.code textarea{
+    display: block;
+    width: 96%;
+    padding: 2%;
+    height: 400px;
+    margin: auto;
+    user-select: none;
+    direction: ltr;
+    -webkit-user-drag: none;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: #d8d8d8;
+
+}
+</style>
+<body>
+<div class="mss-mainheader"></div>
+    <div class="mss-mainbody">
+        <div class="mss-mainhead">
+            <header class="mss-mainheading">
+                <h1>Hello World</h1>
+            </header>
+        </div>
+        <br>
+        <div class="mss-row">
+            <div>
+                <h1>Row 1</h1>
+                <div class="mss-spacer-s"></div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque in cupiditate aliquam, quas adipisci deleniti, officiis omnis praesentium deserunt libero illum porro. Quod eius a perferendis tenetur mollitia nesciunt sapiente.</p>
+            </div>
+            <div class="mss-spacer-s-m"></div>
+            <div>
+                <h1>Row 2</h1>
+                <div class="mss-spacer-s"></div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque in cupiditate aliquam, quas adipisci deleniti, officiis omnis praesentium deserunt libero illum porro. Quod eius a perferendis tenetur mollitia nesciunt sapiente.</p>
+            </div>
+            <blockquote>
+                <font>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero dolor et cum, odio ullam architecto at consectetur iure maiores, est maxime cumque eaque. Eum illum pariatur cupiditate blanditiis laborum debitis.</font>
+                <p>Jhon Doe</p>
+                <span class="mss-copy" onclick="copyText()" title="copy qoutes">
+                    
+                    <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 28.5H2.5C1.94772 28.5 1.5 28.0523 1.5 27.5V11.5C1.5 10.9477 1.94772 10.5 2.5 10.5H16C16.5523 10.5 17 10.9477 17 11.5V27.5C17 28.0523 16.5523 28.5 16 28.5Z" stroke="#222222" stroke-width="2"/>
+                        <rect x="9" y="1" width="16.75" height="18" rx="1" fill="#0C0C0C" stroke="#0C0C0C" stroke-width="2"/>
+                        </svg>           
+                </span>
+                <span class="mss-notif-copy">copied</span>
+                <script>
+                    //make a function to copy the text
+                    function copyText() {
+                        //get the text
+                        var text = document.querySelector("blockquote font").innerText;
+                        //create a text area
+                        var textArea = document.createElement("textarea");
+                        //set the text area to the text
+                        textArea.value = text;
+                        //append the text area to the body
+                        document.body.appendChild(textArea);
+                        //select the text area
+                        textArea.select();
+                        //copy the text
+                        document.execCommand("Copy");
+                        //make a popup
+                        //remove the text area
+                        textArea.remove();
+                        //animate the popup
+                        document.querySelector(".mss-notif-copy").style.animation = "mss-notdif-copy 1s ease-in-out";
+                        
+
+                    } 
+                </script>
+            </blockquote>
+            <div>
+                <h1>Row 3</h1>
+                <div class="mss-spacer-s"></div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque in cupiditate aliquam, quas adipisci deleniti, officiis omnis praesentium deserunt libero illum porro. Quod eius a perferendis tenetur mollitia nesciunt sapiente.</p>
+            </div>
+            <div class="mss-spacer-s-m"></div>
+            <div><div class="mss-spacer-s-m"></div>
+                <div class="frame-i">
+                    <iframe frameborder="0" seamless="seamless" style="width:100%;height:100%;"src="https://www.studen.live" onclick=""></iframe>
+                    <div class="mss-bar-iframe">
+                        <span class="mss-f2c-iframe">
+                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.14286 7.23811H23.0476C24.3494 7.23811 25.4048 8.29343 25.4048 9.59525V31.8572C25.4048 33.159 24.3494 34.2143 23.0476 34.2143H3.14285C1.84104 34.2143 0.785714 33.159 0.785714 31.8572V9.59525C0.785714 8.29344 1.84104 7.23811 3.14286 7.23811Z" stroke="white" stroke-width="1.57143"/>
+                            <path d="M34.2531 2.06016C34.2891 1.30868 33.7572 0.672622 33.0651 0.639489L21.7866 0.0995675C21.0945 0.0664352 20.5043 0.648772 20.4683 1.40025C20.4324 2.15174 20.9643 2.78779 21.6564 2.82092L31.6817 3.30085L31.1606 14.1863C31.1246 14.9378 31.6565 15.5738 32.3486 15.6069C33.0407 15.6401 33.6309 15.0577 33.6669 14.3063L34.2531 2.06016ZM2.41147 34.0134L33.84 3.00473L32.1599 0.995602L0.73135 32.0042L2.41147 34.0134Z" fill="white"/>
+                            </svg>
+                            
+
+                        </span>
+                        <span class="mss-shr-iframe">
+                            <svg width="52" height="37" viewBox="0 0 52 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g >
+                                <path d="M27.3194 9.66765C27.3194 8.3101 28.789 7.46164 29.9647 8.14041L44.5136 16.5402C45.6893 17.219 45.6893 18.9159 44.5136 19.5947L29.9647 27.9945C28.789 28.6733 27.3194 27.8249 27.3194 26.4673L27.3194 9.66765Z" fill="white"/>
+                                </g>
+                                <path d="M5.86125 36.7085C12.4516 20.9328 16.2229 9.53686 35.0683 13.9361L36.4334 23.0969C36.4334 23.0969 24.076 22.0864 17.7084 24.9214C11.3409 27.7564 5.86125 36.7085 5.86125 36.7085Z" fill="white"/>
+                                </svg>
+                                
+                        </span>
+                        <script>
+                            //onclick function
+                            //to fullscreen the iframe
+                            //mss-f2c-iframe
+                            document.querySelector(".mss-f2c-iframe").onclick = function() {
+                                //get the iframe
+                                var iframe = document.querySelector("iframe");
+                                //fullscreen the iframe
+               
+                                iframe.requestFullscreen();
+                            }
+                            //to share the iframe
+                           //webshare api
+                            //mss-shr-iframe
+                            document.querySelector(".mss-shr-iframe").onclick = function() {
+                                //get the iframe
+                                var iframe = document.querySelector("iframe");
+                                //get the url
+                                var url = iframe.src;
+                                //share the url
+                                //get title from the iframe url
+                                var title = url.split("/")[2];
+                                //share the url 
+                                
+                                navigator.share({
+                                    title:  url,
+                                    text: title,
+                                    url: url
+
+                                })
+                            }
+                        </script>
+                    </div>
+                    
+                    <center><p><script>
+                        //iframe src
+                        
+                        var src = document.querySelector("iframe").src;
+                        document.writeln("<a>"+src+"</a>");
+                    </script></p></center>
+                    <div class="mss-spacer-s-m"></div>
+                </div>
+                
+    
+            </div>
+            <div>           
+                <iframe width="853" height="480" class="iframe-youtube" src="https://www.youtube.com/embed/HAPnutGsfLs" title="The KING is Back 💥 Complete PHYSICS in 1 Shot - Concepts + PYQs !!!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <style>
+.textarea::-moz-selection {
+	 background: rgba(0, 140, 255,0.3);
+   
+}
+.textarea::selection {
+	 background:rgba(0, 140, 255,0.3);
+
+}
+ .custom-textarea {
+	 position: relative;
+	 width: 96%;
+	 max-width: 96%;
+     height: 300px;
+     padding-left: 2%;
+	 margin: 20px auto;
+	 border-radius: 5px;
+	 box-shadow: 0 0 16px rgba(34,39,37,0.3);
+	 overflow: hidden;
+}
+ .custom-textarea::after {
+	 content: '';
+	 display: block;
+	 position: absolute;
+	 top: 0;
+	 left: 42px;
+	 width: 16px;
+	 height: 100%;
+	 background: #FFFFFF;
+	 pointer-events: none;
+	 z-index: 1;
+}
+ .custom-textarea > .textarea {
+	 display: block;
+	 position: relative;
+	 z-index: 1;
+	 width: 100%;
+	 height: 100%;
+	 min-height: 150px;
+	 max-height: 90vh;
+	 margin-left: 58px;
+	 font-size: 16px;
+	 line-height: 24px;
+	 font-family: 'Open Sans', sans-serif;
+	 outline: none;
+	 border: none;
+	 border-radius: 0 5px 5px 0;
+	 resize: vertical;
+	 white-space: pre;
+	 overflow: auto;
+	 word-wrap: normal;
+	 color: #121113;
+	 background: #FFFFFF;
+}
+ .custom-textarea > .textarea::-webkit-scrollbar-track {
+	 border-radius: 0;
+	 background-color: #cecece;
+}
+ .custom-textarea > .textarea::-webkit-scrollbar {
+	 width: 12px;
+	 background-color: #FFFFFF;
+}
+ .custom-textarea > .textarea::-webkit-scrollbar-thumb {
+	 border-radius: 0;
+	 background-color: #E4E6C3;
+}
+ .custom-textarea > .linenumbers {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 42px;
+	 background: #bebebd;
+}
+ .custom-textarea > .linenumbers > .number {
+	 font-family: 'Ubuntu Mono', monospace;
+	 font-size: 16px;
+	 line-height: 24px;
+	 padding-left: 6px;
+	 color: #222725;
+}
+ 
+                </style>
+                <div class='custom-textarea'>
+                    <textarea class='textarea'>
+Lorem ipsum dolor, sit amet consectetur
+adipisicing elit. Perferendis, illo incidunt!
+        
+Tempore accusamus molestiae voluptatem nesciunt
+eos doloremque perferendis maiores. Voluptas mollitia
+velit exercitationem deserunt!
+        
+Repellendus sit iste quasi qui?
+    
+Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Aliquid, rerum corporis deserunt nihil dolore recusandae
+id labore consectetur odit itaque nesciunt possimus
+fugiat aspernatur, eum sapiente quibusdam aut illo? Minus?
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Numquam in dignissimos unde animi repudiandae inventore
+modi ipsum quaerat ipsam deleniti provident ullam eius
+porro distinctio fugiat, nam eveniet culpa magni.
+                </textarea>
+                    <div class='linenumbers'></div>
+                </div>
+                <script>
+                    class CustomTextarea {
+    constructor(element) {
+        this.element = element;
+        this.textarea = this.element.querySelector('.textarea');
+        this.numbers = this.element.querySelector('.linenumbers');
+        
+        this.numberOfNumbers = 1;
+
+        this.addMoreNumbers();
+        this.initEventListeners();
+    }
+
+    addMoreNumbers() {
+        let html = '';
+
+        for (let i = this.numberOfNumbers; i < this.numberOfNumbers + 100; i++) {
+            html += `<div class='number'>${ i }</div>`;
+        }
+
+        this.numberOfNumbers += 100;
+        this.numbers.innerHTML += html;
+    }
+
+    initEventListeners() {
+        this.textarea.addEventListener('scroll', () => {
+            this.numbers.style.transform = `translateY(-${ this.textarea.scrollTop }px)`;
+            
+            if (Math.abs(
+                this.numbers.offsetHeight
+                    - this.textarea.offsetHeight
+                    - this.textarea.scrollTop) < 100) {
+                this.addMoreNumbers();
+            }
+        });
+    }
+};
+
+const textarea = new CustomTextarea(document.querySelector('.custom-textarea'));
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
